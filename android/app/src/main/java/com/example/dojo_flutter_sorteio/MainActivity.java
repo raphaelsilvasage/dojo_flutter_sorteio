@@ -1,4 +1,4 @@
-package com.example.dojo_flutter_sorteio;
+package com.dojo_flutter_sorteio;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

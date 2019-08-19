@@ -63,7 +63,7 @@ class _LoginViewState extends State<LoginView> {
 
       if (senhaValida) {
         Usuario usuarioLogado = Usuario(id: usuarioEncontrado.documents[0].documentID, nome: usuarioEncontrado.documents[0]["nome"]);
-        Navigator.of(context).pushNamed(NavegacaoHelper.rotaPrincipal, arguments: {
+        Navigator.of(context).pushNamedAndRemoveUntil(NavegacaoHelper.rotaPrincipal, (Route<dynamic> route) => false, arguments: {
           "usuario": usuarioLogado,
         });
       } else {
@@ -73,6 +73,4 @@ class _LoginViewState extends State<LoginView> {
       GeralHelper.exibirAlerta(context, "Usuário não cadastrado");
     }
   }
-
-  
 }

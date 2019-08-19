@@ -1,10 +1,8 @@
+import 'package:dojo_flutter_sorteio/views/participantesListagem.dart';
 import 'package:flutter/material.dart';
 import 'package:dojo_flutter_sorteio/models/usuario.dart';
 import 'package:dojo_flutter_sorteio/views/loginView.dart';
 import 'package:dojo_flutter_sorteio/views/principalView.dart';
-// import 'package:dojo_flutter_sorteio/views/brindeCadastroView.dart';
-// import 'package:dojo_flutter_sorteio/views/brindeListagemView.dart';
-// import 'package:dojo_flutter_sorteio/views/participanteListagemView.dart';
 
 class NavegacaoHelper {
   static const rotaRoot = "/";
@@ -44,10 +42,10 @@ class NavegacaoHelper {
         //   viewEncontrada = BrindeCadastroView(usuarioLogado);
         //   break;
 
-        // case rotaParticipantesListagem:
-        //   Usuario usuarioLogado = parametros != null ? parametros["usuario"] : null;
-        //   viewEncontrada = ParticipanteListagemView(usuarioLogado);
-        //   break;
+        case rotaParticipantesListagem:
+          Usuario usuarioLogado = parametros != null ? parametros["usuario"] : null;
+          viewEncontrada = ParticipantesListagemView(usuarioLogado);
+          break;
 
         default:
           return null;
