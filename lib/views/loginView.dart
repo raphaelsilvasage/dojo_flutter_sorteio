@@ -1,7 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dojo_flutter_sorteio/helpers/geralHelper.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dojo_flutter_sorteio/models/usuario.dart';
+import 'package:dojo_flutter_sorteio/helpers/geralHelper.dart';
 import 'package:dojo_flutter_sorteio/helpers/navegacaoHelper.dart';
 
 class LoginView extends StatefulWidget {

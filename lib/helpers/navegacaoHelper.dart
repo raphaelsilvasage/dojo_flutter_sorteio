@@ -1,8 +1,10 @@
-import 'package:dojo_flutter_sorteio/views/participantesListagem.dart';
 import 'package:flutter/material.dart';
 import 'package:dojo_flutter_sorteio/models/usuario.dart';
 import 'package:dojo_flutter_sorteio/views/loginView.dart';
 import 'package:dojo_flutter_sorteio/views/principalView.dart';
+import 'package:dojo_flutter_sorteio/views/brindeCadastroView.dart';
+import 'package:dojo_flutter_sorteio/views/brindeListagemView.dart';
+import 'package:dojo_flutter_sorteio/views/participantesListagem.dart';
 
 class NavegacaoHelper {
   static const rotaRoot = "/";
@@ -31,16 +33,16 @@ class NavegacaoHelper {
           viewEncontrada = PrincipalView(usuarioLogado);
           break;
 
-        // case rotaBrindesListagem:
-        //   Usuario usuarioLogado = parametros != null ? parametros["usuario"] : null;
-        //   bool retornarValor = parametros != null ? parametros["retornarValor"] : null;
-        //   viewEncontrada = BrindeListagemView(usuarioLogado, retornarValor: retornarValor);
-        //   break;
+        case rotaBrindesListagem:
+          Usuario usuarioLogado = parametros != null ? parametros["usuario"] : null;
+          bool retornarValor = parametros != null ? parametros["retornarValor"] : null;
+          viewEncontrada = BrindeListagemView(usuarioLogado, retornarValor: retornarValor);
+          break;
 
-        // case rotaBrindesCadastro:
-        //   Usuario usuarioLogado = parametros != null ? parametros["usuario"] : null;
-        //   viewEncontrada = BrindeCadastroView(usuarioLogado);
-        //   break;
+        case rotaBrindesCadastro:
+          Usuario usuarioLogado = parametros != null ? parametros["usuario"] : null;
+          viewEncontrada = BrindeCadastroView(usuarioLogado);
+          break;
 
         case rotaParticipantesListagem:
           Usuario usuarioLogado = parametros != null ? parametros["usuario"] : null;

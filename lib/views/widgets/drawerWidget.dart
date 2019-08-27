@@ -1,6 +1,6 @@
-import 'package:dojo_flutter_sorteio/helpers/navegacaoHelper.dart';
-import 'package:dojo_flutter_sorteio/models/usuario.dart';
 import 'package:flutter/material.dart';
+import 'package:dojo_flutter_sorteio/models/usuario.dart';
+import 'package:dojo_flutter_sorteio/helpers/navegacaoHelper.dart';
 
 Widget drawerWidget(BuildContext context, Usuario usuarioLogado) {
   return Drawer(

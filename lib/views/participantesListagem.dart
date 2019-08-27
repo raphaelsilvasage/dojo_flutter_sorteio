@@ -1,8 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dojo_flutter_sorteio/models/participante.dart';
-import 'package:dojo_flutter_sorteio/models/usuario.dart';
-import 'package:dojo_flutter_sorteio/views/widgets/drawerWidget.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dojo_flutter_sorteio/models/usuario.dart';
+import 'package:dojo_flutter_sorteio/models/participante.dart';
+import 'package:dojo_flutter_sorteio/views/widgets/drawerWidget.dart';
 
 class ParticipantesListagemView extends StatelessWidget {
   final Usuario usuarioLogado;
@@ -21,19 +21,25 @@ class ParticipantesListagemView extends StatelessWidget {
         child: FutureBuilder<List<Participante>>(
           future: _carregaParticipantes(),
           builder: (context, snapshot) {
-            return ListView.builder(
-              padding: EdgeInsets.zero,
-              itemCount: snapshot?.data?.length ?? 0,
-              itemBuilder: (context, index) {
-                return ListTile(
-                    title: Text(snapshot.data[index].nome, style: TextStyle(color: Colors.grey)),
-                    trailing: Icon(
-                      Icons.person_add,
-                      color: Colors.grey,
-                    ),
-                    onTap: () {});
-              },
-            );
+            switch (snapshot.connectionState) {
+              case ConnectionState.done:
+                return ListView.builder(
+                  padding: EdgeInsets.zero,
+                  itemCount: snapshot?.data?.length ?? 0,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                        title: Text(snapshot.data[index].nome, style: TextStyle(color: Colors.grey)),
+                        trailing: Icon(
+                          Icons.person_add,
+                          color: Colors.grey,
+                        ),
+                        onTap: () {});
+                  },
+                );
+
+              default:
+                return Center(child: CircularProgressIndicator());
+            }
           },
         ),
       ),
@@ -46,7 +52,7 @@ class ParticipantesListagemView extends StatelessWidget {
     QuerySnapshot participantesFirebase = await Firestore.instance.collection("participantes").getDocuments();
     if (participantesFirebase.documents.length > 0) {
       participantesFirebase.documents.forEach((participanteFirebase) {
-        Participante participante = Participante(nome: participanteFirebase["nome"]);
+        Participante participante = Participante.fromJson(participanteFirebase.data);
         listaParticipantes.add(participante);
       });
     }
